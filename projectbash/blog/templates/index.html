@@ -2,8 +2,8 @@
 <div class="row">
   {% if blogs %} {% for blog in blogs %}
   <div class="card">
-    <a href="#"> <h3>{{ blog.name }}</h3></a>
-    <a href="#"><p>{{ blog.author }}</p> </a>
+    <a href="{% url 'blogView' blog.id %}"> <h3>{{ blog.name }}</h3></a>
+    <a href="{% url 'blogger' blog.user.id %}"><p>{{ blog.author }}</p> </a>
 
     <p>{{blog.publishing_date}}</p>
   </div>

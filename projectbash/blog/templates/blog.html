@@ -2,13 +2,14 @@
     
     <div class="row">
       <div class="card">
-        <a href="#"> <h3>Article title</h3></a>
+        <a href="#"> <h3>{{blog.name}}</h3></a>
         
-        <a href="#"><p>Author</p></a>
-        <p>published date</p>
+        <a href="#"><p>{{blog.author}}</p></a>
+        <p>{{blog.publishing_date}}</p>
       </div>
       <div class="card" style="text-align: justify; padding: 30px;">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, quibusdam. Maxime est vitae dolores veritatis voluptates temporibus quam quos nisi, adipisci veniam inventore doloribus illo reiciendis ut pariatur eligendi delectus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque magnam molestias reprehenderit unde nesciunt? Culpa vel eligendi fugiat, provident illo rerum ab laudantium repudiandae iusto quidem temporibus consequatur accusantium voluptates! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates culpa explicabo minima. Pariatur quam saepe quas, tempora velit alias maiores repellendus aperiam enim dolorum fuga? Sint ea repellendus quos iste.</p>
+        <p>
+          {{blog.content}}</p>
       </div>
       
     </div>

@@ -1,36 +1,39 @@
 {% extends 'base.html' %} {% block content %}
 <div class="author" style="text-align: center">
-  <h2>Author Name</h2>
+  <h2>{{ author.user.username}}</h2>
   <p>Blog author status</p>
 </div>
 
 <div class="row">
-  <div class="card">
-    <a href="#"> <h3>Article title</h3></a>
 
-    <p>published date</p>
-  </div>
-  <div class="card">
-    <a href="#"> <h3>Article title</h3></a>
+  {% if blogs %}
 
-    <p>published date</p>
-  </div>
-  <div class="card">
-    <a href="#"> <h3>Article title</h3></a>
+{% for blog in blogs %}
+<div class="card">
+  <a href="{% url 'blogView' blog.user.username %}"> <h3>blog.name</h3></a>
 
-    <p>published date</p>
-  </div>
+  <p>blog.publishing_date</p>
+</div>
+{% endfor %}
+
+{% else %}
+<p>No blogs available</p>
+
+{% endif %}
+
+  
+  
 </div>
 
-<div class="pagination" style="margin-bottom: 100px">
-  <!-- <a href="#">&laquo;</a> -->
+<!-- <div class="pagination" style="margin-bottom: 100px">
+  <a href="#">&laquo;</a>
   <a href="#">1</a>
   <a class="active" href="#">2</a>
   <a href="#">3</a>
   <a href="#">4</a>
   <a href="#">5</a>
   <a href="#">6</a>
-  <!-- <a href="#">&raquo;</a> -->
-</div>
+  <a href="#">&raquo;</a>
+</div> -->
 
 {% endblock %}
