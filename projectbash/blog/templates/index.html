@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  {% if blogs %} {% for blog in blogs %}
+  <div class="card">
+    <a href="#"> <h3>{{ blog.name }}</h3></a>
+    <a href="#"><p>{{ blog.author }}</p> </a>
+
+    <p>{{blog.publishing_date}}</p>
+  </div>
+  {% endfor %} {% else %} 
+    <p> There blogs available </p>
+  {% endif %}
+</div>
+
+<div class="pagination" style="margin-bottom: 100px">
+  <!-- <a href="#">&laquo;</a> -->
+  <a href="#">1</a>
+  <a class="active" href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <!-- <a href="#">&raquo;</a> -->
+</div>
+
+{% endblock %}
