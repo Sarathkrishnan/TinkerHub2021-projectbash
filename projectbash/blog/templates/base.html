@@ -9,21 +9,55 @@
   </head>
   <body style="margin: 0%">
     <div class="header">
-      <h1>Python Blogs</h1>
+      <a href="{% url 'blogs_list' %}">
+        <h1>Python Blogs</h1>
+      </a>
+    
       <p>A to Z python and coding</p>
       <div class="signin" style="text-align: end">
-        <a href="#"> SignIn </a>
+        
+        {% if user.is_authenticated %}
+        <span>
+          Curent user : {{ user.get_username }}
+          <a href="{% url 'addblog' %}" class="top-menu"> Add blog <span class="glyphicon glyphicon-plus"></span></a>
+        </span>
+        {% endif %}
+        <a href="{% url 'bloggers' %}"> / All bloggers </a>
+        /
+        <a href="{% url 'login'%}?next={{request.path}}"> LogIn </a>
+
 
         /
-        <a href="#"> SignUp </a>
-
-        /
-        <a href="#"> LogOut </a>
+        <a href="{% url 'logout'%}?next={{request.path}}"> LogOut </a>
       </div>
     </div>
     {% block content %}
+    
     {% endblock %}
+    <div class="space" style="height: 10px; ">
 
+    </div>
+    {% block pagination %}
+    {% if is_paginated %}
+    
+        <div class="" style="text-align: center;">
+            <span class="">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %}
+        <div class="space" style="height: 100px; ">
+
+        </div>
     <div class="footer">
       <p>Project done during Tinkerhub pyweek</p>
     </div>

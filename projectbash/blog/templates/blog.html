@@ -2,28 +2,43 @@
     
     <div class="row">
       <div class="card">
-        <a href="#"> <h3>{{blog.name}}</h3></a>
+        <a href="#"> <h3>{{ blog.name }}</h3></a>
         
-        <a href="#"><p>{{blog.author}}</p></a>
-        <p>{{blog.publishing_date}}</p>
+        <a href="#"><p>{{ blog.author }}</p></a>
+        <p>{{ blog.publishing_date }}</p>
       </div>
       <div class="card" style="text-align: justify; padding: 30px;">
         <p>
-          {{blog.content}}</p>
+          {{ blog.content }}</p>
       </div>
       
     </div>
     <div class="comments">
       <h2 style="padding: 20px; font-size: 18;">Comments</h2>
-      <form class="msger-inputarea" style="padding: 20px; margin: 10px;">
+      {% if user.is_authenticated %}
+        <span>
+          
+          <a href="{% url 'CommentForm'  %}" class="top-menu"> <div class="btn"> Post a comment</div><span class="glyphicon glyphicon-plus"></span></a>
+        </span>
+        {% endif %}
+      <!-- <form class="msger-inputarea" style="padding: 20px; margin: 10px;">
         <input type="text" class="msger-input" placeholder="Enter your message..." width="100%">
         <button type="submit" class="msger-send-btn">Send</button>
-      </form>
+      </form> -->
+      {% if comments %}
+      {% for comment in comments %}
       <div class="container" style="margin-bottom: 80px;">
-       <p>Sarathkrishnan G S :</p>
-        <p>Good, detailed article. it is better to add examples</p>
-        <span class="time-right">published date</span>
+      
+
+       <p>{{ comment.person}} :</p>
+        <p>{{ comment.comment_text }}</p>
+        <span class="time-right">{{ comment.date }}</span>
       </div>
+      {% endfor %}
+      
+      {% else %}
+      <p>NO comments</p>
+      {% endif %}
     </div>
     
     {% endblock %}

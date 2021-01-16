@@ -1,39 +1,32 @@
 {% extends 'base.html' %} {% block content %}
+
     <div class="author" style="text-align: center;">
       <h2 >All Authors</h2>
     <p>All bloggers in the platform </p>
     </div>
-    
+    {% if bloggers %}
     <div class="row">
+      {% for blogger in bloggers %}
+    
       <div class="card">
-        <a href="#"> <h3>Author Name</h3></a>
-        
-
+        <a href="#"> <h3>{{ blogger.user.username}}</h3></a>
         
       </div>
-      <div class="card">
-        <a href="#"> <h3>Author Name</h3></a>
-        
-
-        
-      </div>
-      <div class="card">
-        <a href="#"> <h3>Author Name</h3></a>
-      
-
-        
-      </div>
+      {% endfor %}
     </div>
+      {% else %}
+        <p>No user in blog</p>
+      {% endif %}
 
-    <div class="pagination" style="margin-bottom: 100px">
-      <!-- <a href="#">&laquo;</a> -->
+    <!-- <div class="pagination" style="margin-bottom: 100px">
+   
       <a href="#">1</a>
       <a class="active" href="#">2</a>
       <a href="#">3</a>
       <a href="#">4</a>
       <a href="#">5</a>
       <a href="#">6</a>
-      <!-- <a href="#">&raquo;</a> -->
-    </div>
+     
+    </div> -->
 
     {% endblock %}

@@ -26,7 +26,7 @@ class Article(models.Model):
         ordering=["-publishing_date"]
     
     def get_absolute_url(self):
-        return reverse('blog-view',args=[str(self.id)])
+         return reverse('blog-view',args=[str(self.id)])
     
     def __str__(self):
         return self.name

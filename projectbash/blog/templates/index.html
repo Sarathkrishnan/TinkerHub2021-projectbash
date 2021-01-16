@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-  {% if blogs %} {% for blog in blogs %}
+  {% if blogs_list %} {% for blog in blogs_list %}
   <div class="card">
-    <a href="{% url 'blogView' blog.id %}"> <h3>{{ blog.name }}</h3></a>
-    <a href="{% url 'blogger' blog.user.id %}"><p>{{ blog.author }}</p> </a>
+    <a href="{{ blog.get_absolute_url }}"> <h3>{{ blog.name }}</h3></a>
+    <a href="{% url 'author' blog.author.pk %}"><p>{{ blog.author }}</p> </a>
 
     <p>{{blog.publishing_date}}</p>
   </div>
@@ -12,15 +12,15 @@
   {% endif %}
 </div>
 
-<div class="pagination" style="margin-bottom: 100px">
-  <!-- <a href="#">&laquo;</a> -->
+<!-- <div class="pagination" style="margin-bottom: 100px">
+
   <a href="#">1</a>
   <a class="active" href="#">2</a>
   <a href="#">3</a>
   <a href="#">4</a>
   <a href="#">5</a>
   <a href="#">6</a>
-  <!-- <a href="#">&raquo;</a> -->
-</div>
+ 
+</div> -->
 
 {% endblock %}
